@@ -7,17 +7,27 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
-    li.push_back(p);
+    ifstream ficheroEntrada;
+    ficheroEntrada.open ("ficheroBinario.dat", ios::in | ios::binary);
+    ficheroEntrada.seekg(0, ios::end);
+    int tamanyo = ficheroEntrada.tellg();
+    ficheroEntrada.close();
+    if(tamanyo == 0)
+    {
+        QMessageBox msgBox;
+        msgBox . setText( "El ficheo está vacío se mostrará una imagen por defecto" );
+        msgBox . exec();
+        imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
+        li.push_back(p);
+    }
     //imagen s(":,v","C:/Users/DELL/Pictures/Saved Pictures/ojo.jpg","sss" );
     //li.push_back(s);
     //imagen t("c:","C:/Users/DELL/Pictures/Saved Pictures/photo-manipulation-eye-wallpaper.jpg","ttt");
     //li.push_back(t);
     //imagen c(":c","C:/Users/DELL/Pictures/Saved Pictures/siri.jpg","ccc");
     //li.push_back(c);
-    it=li.begin();
-
+    binaryLoad(li);
+    imagen p = li.begin().operator*();
 
     string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
     a = new char[general.size()];
@@ -27,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     ui->label_2->setText(a);
 
-
+    it=li.begin();
     string txt=get_path(*it);
     a=new char[txt.size()];
     a[txt.size()]=0;
@@ -107,5 +117,5 @@ void MainWindow::on_actionimagen_triggered()
     std::string utf8_text = file_name.toUtf8().constData();
     imagen p(":v", utf8_text, "ppp");
     li.push_back(p);
-    //save_binary(li);
+    save_binary(li);
 }
