@@ -88,6 +88,8 @@ private slots:
 
     void on_actionBack_triggered();
 
+    void on_add_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

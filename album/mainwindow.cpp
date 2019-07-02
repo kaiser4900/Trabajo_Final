@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     int tamanyo = ficheroEntrada.tellg();
     ficheroEntrada.close();
     QMessageBox msgBox;
-    bool aux = false;
     if(tamanyo == 0)
     {
 
@@ -153,12 +152,36 @@ void MainWindow::on_actionimagen_triggered()
 {
     QString file_name = QFileDialog :: getOpenFileName(this, "open a file","C:/Users/DELL/Pictures/Saved Pictures");
     std::string utf8_text = file_name.toUtf8().constData();
-    QString file = QFileDialog :: getSaveFileName(this,"open a file","c:/");
+    //ideA PARA ELEGIR EN QUE ARCHIVO GUARDAR QString file = QFileDialog :: getSaveFileName(this,"open a file","c:/");
     imagen p(":v", utf8_text, "ppp");
     li.push_back(p);
     save_binary(li);
 }
+void MainWindow::on_add_button_clicked()
+{
+    QString new_name = ui->input_name->text();
+    QString new_path = ui->input_path->text();
+    QString new_label = ui->input_label->text();
+    if(new_path != nullptr)
+    {
+        string utf8_text_1 = new_name.toUtf8().constData();
+        string utf8_text_2 = new_path.toUtf8().constData();
+        string utf8_text_3 = new_label.toUtf8().constData();
+        imagen p(utf8_text_1, utf8_text_2, utf8_text_3);
+        li.push_back(p);
+        save_binary(li);
+    }
+    else {
+        QString file_name = QFileDialog :: getOpenFileName(this, "open a file","C:/Users/DELL/Pictures/Saved Pictures");
+        std::string utf8_text = file_name.toUtf8().constData();
+        string utf8_text_1 = new_name.toUtf8().constData();
+        string utf8_text_3 = new_label.toUtf8().constData();
+        imagen p(utf8_text_1, utf8_text, utf8_text_3);
+        li.push_back(p);
+        save_binary(li);
+    }
 
+}
 void MainWindow::on_actionFront_triggered()
 {
     if(li.size()==0)
