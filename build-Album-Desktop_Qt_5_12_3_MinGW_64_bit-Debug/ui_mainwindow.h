@@ -27,6 +27,8 @@ class Ui_MainWindow
 {
 public:
     QAction *actionimagen;
+    QAction *actionFront;
+    QAction *actionBack;
     QWidget *centralWidget;
     QLabel *label;
     QPushButton *pushButton;
@@ -34,6 +36,7 @@ public:
     QLabel *label_2;
     QMenuBar *menuBar;
     QMenu *NEW;
+    QMenu *menudelete;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -44,6 +47,10 @@ public:
         MainWindow->resize(1213, 649);
         actionimagen = new QAction(MainWindow);
         actionimagen->setObjectName(QString::fromUtf8("actionimagen"));
+        actionFront = new QAction(MainWindow);
+        actionFront->setObjectName(QString::fromUtf8("actionFront"));
+        actionBack = new QAction(MainWindow);
+        actionBack->setObjectName(QString::fromUtf8("actionBack"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         label = new QLabel(centralWidget);
@@ -78,6 +85,8 @@ public:
         menuBar->setGeometry(QRect(0, 0, 1213, 26));
         NEW = new QMenu(menuBar);
         NEW->setObjectName(QString::fromUtf8("NEW"));
+        menudelete = new QMenu(menuBar);
+        menudelete->setObjectName(QString::fromUtf8("menudelete"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -87,7 +96,10 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(NEW->menuAction());
+        menuBar->addAction(menudelete->menuAction());
         NEW->addAction(actionimagen);
+        menudelete->addAction(actionFront);
+        menudelete->addAction(actionBack);
 
         retranslateUi(MainWindow);
 
@@ -98,11 +110,14 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionimagen->setText(QApplication::translate("MainWindow", "imagen", nullptr));
+        actionFront->setText(QApplication::translate("MainWindow", "Front", nullptr));
+        actionBack->setText(QApplication::translate("MainWindow", "Back", nullptr));
         label->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "next", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "previous", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         NEW->setTitle(QApplication::translate("MainWindow", "New", nullptr));
+        menudelete->setTitle(QApplication::translate("MainWindow", "Delete", nullptr));
     } // retranslateUi
 
 };

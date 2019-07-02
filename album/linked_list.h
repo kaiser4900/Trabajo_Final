@@ -78,16 +78,6 @@ private:
                   return iterator (back);
         }
     }
-    /*int my_size(string s)
-    {
-        int j=0;
-        while(s[j]!='\0')
-        {
-            j++;
-        }
-        return j;
-    }
-*/
     T operator []( int i)
     {
         int j=0;
@@ -109,9 +99,12 @@ private:
         int i = 0;
         while (cont)
         {
-              cont = cont ->p_next;
-              i++;
-              if(!cont->p_next)
+              if(cont ->p_next)
+              {
+                    cont = cont ->p_next;
+                    i++;
+              }
+              else
                   return i;
         }
     }

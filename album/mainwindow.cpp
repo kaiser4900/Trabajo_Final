@@ -12,24 +12,62 @@ MainWindow::MainWindow(QWidget *parent) :
     ficheroEntrada.seekg(0, ios::end);
     int tamanyo = ficheroEntrada.tellg();
     ficheroEntrada.close();
+    QMessageBox msgBox;
+    bool aux = false;
     if(tamanyo == 0)
     {
-        QMessageBox msgBox;
+
         msgBox . setText( "El ficheo está vacío se mostrará una imagen por defecto" );
         msgBox . exec();
         imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
         li.push_back(p);
-    }
-    //imagen s(":,v","C:/Users/DELL/Pictures/Saved Pictures/ojo.jpg","sss" );
-    //li.push_back(s);
-    //imagen t("c:","C:/Users/DELL/Pictures/Saved Pictures/photo-manipulation-eye-wallpaper.jpg","ttt");
-    //li.push_back(t);
-    //imagen c(":c","C:/Users/DELL/Pictures/Saved Pictures/siri.jpg","ccc");
-    //li.push_back(c);
-    binaryLoad(li);
-    imagen p = li.begin().operator*();
+        string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
+        a = new char[general.size()];
+        a[general.size()]=0;
+        for(size_t i=0;i<general.size();i++){
+            a[i]=general[i];
+        }
+        ui->label_2->setText(a);
 
-    string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
+        it=li.begin();
+        string txt=get_path(*it);
+        a=new char[txt.size()];
+        a[txt.size()]=0;
+        for(size_t i=0;i<txt.size();i++){
+            a[i]=txt[i];
+        }
+        pix={a};
+        ui->label->setPixmap(pix);
+    }
+    else {
+        msgBox . setText( "El fichero se leyó correctamente" );
+        msgBox . exec();
+        binaryLoad(li);
+        imagen p = li.begin().operator*();
+        string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
+        a = new char[general.size()];
+        a[general.size()]=0;
+        for(size_t i=0;i<general.size();i++){
+            a[i]=general[i];
+        }
+        ui->label_2->setText(a);
+
+        it=li.begin();
+        string txt=get_path(*it);
+        a=new char[txt.size()];
+        a[txt.size()]=0;
+        for(size_t i=0;i<txt.size();i++){
+            a[i]=txt[i];
+        }
+        pix={a};
+        ui->label->setPixmap(pix);
+    }
+    //binaryLoad(li);
+    //imagen p = li.begin().operator*();
+    /*imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
+    li.push_back(p);*/
+
+    /*string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
     a = new char[general.size()];
     a[general.size()]=0;
     for(size_t i=0;i<general.size();i++){
@@ -46,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     pix={a};
     ui->label->setPixmap(pix);
-
+*/
 }
 
 MainWindow::~MainWindow()
@@ -115,7 +153,40 @@ void MainWindow::on_actionimagen_triggered()
 {
     QString file_name = QFileDialog :: getOpenFileName(this, "open a file","C:/Users/DELL/Pictures/Saved Pictures");
     std::string utf8_text = file_name.toUtf8().constData();
+    QString file = QFileDialog :: getSaveFileName(this,"open a file","c:/");
     imagen p(":v", utf8_text, "ppp");
     li.push_back(p);
     save_binary(li);
+}
+
+void MainWindow::on_actionFront_triggered()
+{
+    if(li.size()==0)
+    {
+        save_binary(li);
+    }
+    if(li.size()==1)
+    {
+        li.remove_front();
+    }
+    else {
+        li.remove_front();
+        save_binary(li);
+    }
+}
+
+void MainWindow::on_actionBack_triggered()
+{
+    if(li.size()==0)
+    {
+        save_binary(li);
+    }
+    if(li.size()==1)
+    {
+        li.remove_back();
+    }
+    else {
+        li.remove_back();
+        save_binary(li);
+    }
 }

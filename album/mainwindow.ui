@@ -130,7 +130,15 @@
     </property>
     <addaction name="actionimagen"/>
    </widget>
+   <widget class="QMenu" name="menudelete">
+    <property name="title">
+     <string>Delete</string>
+    </property>
+    <addaction name="actionFront"/>
+    <addaction name="actionBack"/>
+   </widget>
    <addaction name="NEW"/>
+   <addaction name="menudelete"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -144,6 +152,16 @@
   <action name="actionimagen">
    <property name="text">
     <string>imagen</string>
+   </property>
+  </action>
+  <action name="actionFront">
+   <property name="text">
+    <string>Front</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="text">
+    <string>Back</string>
    </property>
   </action>
  </widget>

@@ -18,6 +18,7 @@ public:
     QPixmap pix;
     linked_list<imagen> li;
     linked_list<imagen>::iterator it;
+    QMessageBox msgBox;
 
     void save_binary(linked_list <imagen> &v)
     {
@@ -82,6 +83,10 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_actionimagen_triggered();
+
+    void on_actionFront_triggered();
+
+    void on_actionBack_triggered();
 
 private:
     Ui::MainWindow *ui;
