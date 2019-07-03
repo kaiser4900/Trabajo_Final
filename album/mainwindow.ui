@@ -223,66 +223,11 @@
      <string>Name :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>480</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>120</red>
-          <green>120</green>
-          <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Path :</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>520</y>
+      <y>480</y>
       <width>71</width>
       <height>31</height>
      </rect>
@@ -343,21 +288,11 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="input_path">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>480</y>
-      <width>113</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="input_label">
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>530</y>
+      <y>480</y>
       <width>113</width>
       <height>22</height>
      </rect>

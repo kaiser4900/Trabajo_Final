@@ -160,27 +160,14 @@ void MainWindow::on_actionimagen_triggered()
 void MainWindow::on_add_button_clicked()
 {
     QString new_name = ui->input_name->text();
-    QString new_path = ui->input_path->text();
     QString new_label = ui->input_label->text();
-    if(new_path != nullptr)
-    {
-        string utf8_text_1 = new_name.toUtf8().constData();
-        string utf8_text_2 = new_path.toUtf8().constData();
-        string utf8_text_3 = new_label.toUtf8().constData();
-        imagen p(utf8_text_1, utf8_text_2, utf8_text_3);
-        li.push_back(p);
-        save_binary(li);
-    }
-    else {
-        QString file_name = QFileDialog :: getOpenFileName(this, "open a file","C:/Users/DELL/Pictures/Saved Pictures");
-        std::string utf8_text = file_name.toUtf8().constData();
-        string utf8_text_1 = new_name.toUtf8().constData();
-        string utf8_text_3 = new_label.toUtf8().constData();
-        imagen p(utf8_text_1, utf8_text, utf8_text_3);
-        li.push_back(p);
-        save_binary(li);
-    }
-
+    QString new_path = QFileDialog :: getOpenFileName(this, "Open a file","C:/Users/DELL/Pictures/Saved Pictures");
+    std::string utf8_text = new_path.toUtf8().constData();
+    string utf8_text_1 = new_name.toUtf8().constData();
+    string utf8_text_3 = new_label.toUtf8().constData();
+    imagen p(utf8_text_1, utf8_text, utf8_text_3);
+    li.push_back(p);
+    save_binary(li);
 }
 void MainWindow::on_actionFront_triggered()
 {
