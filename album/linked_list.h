@@ -120,12 +120,22 @@ private:
     }
     void remove(iterator it)
         {
-            node * del = it.n;
-            node * prev = del->p_prev;
-            node * next = del->p_next;
-            prev -> p_next = next;
-            next -> p_prev = prev;
-            delete del;
+        node * del = it.n;
+
+            if( del->p_prev && del->p_next)
+            {
+                node * prev = del->p_prev;
+                node * next = del->p_next;
+                prev -> p_next = next;
+                next -> p_prev = prev;
+                delete del;
+            }
+            else if (del == p_head) {
+                remove_front();
+            }
+            else {
+                remove_back();
+            }
         }
     void remove_front()
     {
