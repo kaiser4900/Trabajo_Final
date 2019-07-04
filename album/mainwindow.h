@@ -90,6 +90,8 @@ private slots:
 
     void on_add_button_clicked();
 
+    void on_actionthis_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -30,6 +30,7 @@ public:
     QAction *actionimagen;
     QAction *actionFront;
     QAction *actionBack;
+    QAction *actionthis;
     QWidget *centralWidget;
     QLabel *label;
     QPushButton *pushButton;
@@ -57,6 +58,8 @@ public:
         actionFront->setObjectName(QString::fromUtf8("actionFront"));
         actionBack = new QAction(MainWindow);
         actionBack->setObjectName(QString::fromUtf8("actionBack"));
+        actionthis = new QAction(MainWindow);
+        actionthis->setObjectName(QString::fromUtf8("actionthis"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         label = new QLabel(centralWidget);
@@ -153,6 +156,7 @@ public:
         NEW->addAction(actionimagen);
         menudelete->addAction(actionFront);
         menudelete->addAction(actionBack);
+        menudelete->addAction(actionthis);
 
         retranslateUi(MainWindow);
 
@@ -165,6 +169,7 @@ public:
         actionimagen->setText(QApplication::translate("MainWindow", "imagen", nullptr));
         actionFront->setText(QApplication::translate("MainWindow", "Front", nullptr));
         actionBack->setText(QApplication::translate("MainWindow", "Back", nullptr));
+        actionthis->setText(QApplication::translate("MainWindow", "this", nullptr));
         label->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "next", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "previous", nullptr));

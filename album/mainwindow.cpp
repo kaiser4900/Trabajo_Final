@@ -200,3 +200,9 @@ void MainWindow::on_actionBack_triggered()
         save_binary(li);
     }
 }
+
+void MainWindow::on_actionthis_triggered()
+{
+    li.remove(it);
+    save_binary(li);
+}

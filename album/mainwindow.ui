@@ -333,6 +333,7 @@
     </property>
     <addaction name="actionFront"/>
     <addaction name="actionBack"/>
+    <addaction name="actionthis"/>
    </widget>
    <addaction name="NEW"/>
    <addaction name="menudelete"/>
@@ -359,6 +360,11 @@
   <action name="actionBack">
    <property name="text">
     <string>Back</string>
+   </property>
+  </action>
+  <action name="actionthis">
+   <property name="text">
+    <string>this</string>
    </property>
   </action>
  </widget>

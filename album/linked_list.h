@@ -118,6 +118,15 @@ private:
             aux->p_prev = p_head;
         }
     }
+    void remove(iterator it)
+        {
+            node * del = it.n;
+            node * prev = del->p_prev;
+            node * next = del->p_next;
+            prev -> p_next = next;
+            next -> p_prev = prev;
+            delete del;
+        }
     void remove_front()
     {
         if(p_head!=nullptr)
