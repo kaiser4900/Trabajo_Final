@@ -67,6 +67,7 @@ public:
                     ficheroEntrada.read((char *)&size_string,sizeof(int));
                     char c3[size_string+1];
                     ficheroEntrada.read((char*)&c3,size_string);
+                    c3[size_string] = '\0';
                     change_label(s,c3);
                     v.push_back(s);
             }
