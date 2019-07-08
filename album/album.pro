@@ -25,16 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        bst.cpp \
         imagen.cpp \
-        linked_list.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
         bst.h \
+        bst.inl \
         imagen.h \
         linked_list.h \
+        linked_list.inl \
+        load_save.h \
         mainwindow.h
 
 FORMS += \

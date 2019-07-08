@@ -8,52 +8,19 @@ using namespace std;
 template<class K, class D>
 class bst
 {
-    struct node
-    {
-        K key;
-        D dato;
-        node * p_child[2];
-        node(const K & k) : key(k)
-        {
-            p_child[0] = p_child[1] = nullptr;
-        }
-        node(const K & k,const D & d) : key (k), dato(d)
-        {
-            p_child[0] = p_child[1] = nullptr;
-        }
-        ~node() = default;
-    };
+    struct node;
+
     private:
     node * p_root;
 
     public:
     bst() : p_root(nullptr){}
-    bool insert(const K & k, const D & d)
-    {
-        node **n;
-        if(find(n,k)) return false;
-        *n = new node(k,d);
-        return true;
-    }
-    bool find(const K & k)
-    {
-        node **n;
-        return (find (n,k));
-    }
-    bool remove(const K & k)
-    {
-        node **n;
-        if(!find(n,k)) return false;
-        //completar
-        return true;
-    }
-    D & operator [] (const K & key)
-    {
-        node ** n;
-        if(!find(n,key))
-            *n = new node (key);
-        return (*n) -> dato;
-    }
+    bool insert(const K & k, const D & d);
+
+    bool find(const K & k);
+    bool remove(const K & k);
+
+    D & operator [] (const K & key);
 
     private :
     bool find(node **& n, const K & key)
@@ -67,5 +34,5 @@ class bst
         return false;
     }
 };
-
+#include "bst.inl"
 #endif // BST_H

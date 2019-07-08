@@ -31,6 +31,7 @@ public:
     QAction *actionFront;
     QAction *actionBack;
     QAction *actionthis;
+    QAction *actionsearch;
     QWidget *centralWidget;
     QLabel *label;
     QPushButton *pushButton;
@@ -41,6 +42,8 @@ public:
     QLineEdit *input_name;
     QLineEdit *input_label;
     QPushButton *add_button;
+    QLineEdit *input_search;
+    QPushButton *search;
     QMenuBar *menuBar;
     QMenu *NEW;
     QMenu *menudelete;
@@ -60,6 +63,8 @@ public:
         actionBack->setObjectName(QString::fromUtf8("actionBack"));
         actionthis = new QAction(MainWindow);
         actionthis->setObjectName(QString::fromUtf8("actionthis"));
+        actionsearch = new QAction(MainWindow);
+        actionsearch->setObjectName(QString::fromUtf8("actionsearch"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         label = new QLabel(centralWidget);
@@ -135,6 +140,12 @@ public:
         add_button = new QPushButton(centralWidget);
         add_button->setObjectName(QString::fromUtf8("add_button"));
         add_button->setGeometry(QRect(600, 480, 93, 28));
+        input_search = new QLineEdit(centralWidget);
+        input_search->setObjectName(QString::fromUtf8("input_search"));
+        input_search->setGeometry(QRect(360, 530, 113, 22));
+        search = new QPushButton(centralWidget);
+        search->setObjectName(QString::fromUtf8("search"));
+        search->setGeometry(QRect(520, 530, 93, 28));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -170,6 +181,7 @@ public:
         actionFront->setText(QApplication::translate("MainWindow", "Front", nullptr));
         actionBack->setText(QApplication::translate("MainWindow", "Back", nullptr));
         actionthis->setText(QApplication::translate("MainWindow", "this", nullptr));
+        actionsearch->setText(QApplication::translate("MainWindow", "search", nullptr));
         label->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "next", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "previous", nullptr));
@@ -177,6 +189,7 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Name :", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "Label :", nullptr));
         add_button->setText(QApplication::translate("MainWindow", "Add", nullptr));
+        search->setText(QApplication::translate("MainWindow", "search", nullptr));
         NEW->setTitle(QApplication::translate("MainWindow", "New", nullptr));
         menudelete->setTitle(QApplication::translate("MainWindow", "Delete", nullptr));
     } // retranslateUi

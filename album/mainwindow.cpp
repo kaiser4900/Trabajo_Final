@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QFileDialog"
-
+#include "load_save.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
         msgBox . exec();
         imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
         li.push_back(p);
+        bst_i.insert(get_name(p),p);
         string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
         a = new char[general.size()];
         a[general.size()]=0;
@@ -61,29 +62,6 @@ MainWindow::MainWindow(QWidget *parent) :
         pix={a};
         ui->label->setPixmap(pix);
     }
-    //binaryLoad(li);
-    //imagen p = li.begin().operator*();
-    /*imagen p(":v", "C:/Users/DELL/Pictures/Saved Pictures/artificial-intelligence.jpg", "ppp");
-    li.push_back(p);*/
-
-    /*string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
-    a = new char[general.size()];
-    a[general.size()]=0;
-    for(size_t i=0;i<general.size();i++){
-        a[i]=general[i];
-    }
-    ui->label_2->setText(a);
-
-    it=li.begin();
-    string txt=get_path(*it);
-    a=new char[txt.size()];
-    a[txt.size()]=0;
-    for(size_t i=0;i<txt.size();i++){
-        a[i]=txt[i];
-    }
-    pix={a};
-    ui->label->setPixmap(pix);
-*/
 }
 
 MainWindow::~MainWindow()
@@ -155,6 +133,7 @@ void MainWindow::on_actionimagen_triggered()
     //ideA PARA ELEGIR EN QUE ARCHIVO GUARDAR QString file = QFileDialog :: getSaveFileName(this,"open a file","c:/");
     imagen p(":v", utf8_text, "ppp");
     li.push_back(p);
+    bst_i.insert(get_name(p),p);
     save_binary(li);
 }
 void MainWindow::on_add_button_clicked()
@@ -167,8 +146,24 @@ void MainWindow::on_add_button_clicked()
     string utf8_text_3 = new_label.toUtf8().constData();
     imagen p(utf8_text_1, utf8_text, utf8_text_3);
     li.push_back(p);
+    bst_i.insert(get_name(p),p);
     save_binary(li);
 }
+void MainWindow::on_search_clicked()
+{
+    QString search = ui->input_search->text();
+    string utf8_text_1 = search.toUtf8().constData();
+    if(bst_i.find(utf8_text_1))
+    {
+        msgBox . setText( "Encontrado" );
+        msgBox . exec();
+    }
+    else {
+        msgBox .setText("no encontrado");
+        msgBox .exec();
+    }
+}
+
 void MainWindow::on_actionFront_triggered()
 {
     if(li.size()==0)

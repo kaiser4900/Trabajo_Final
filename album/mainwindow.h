@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "linked_list.h"
 #include "imagen.h"
+#include "bst.h"
 #include <QPixmap>
 #include "QMessageBox"
 namespace Ui {
@@ -18,6 +19,7 @@ public:
     QPixmap pix;
     linked_list<imagen> li;
     linked_list<imagen>::iterator it;
+    bst<string,imagen>bst_i;
     QMessageBox msgBox;
 
     void save_binary(linked_list <imagen> &v)
@@ -70,6 +72,7 @@ public:
                     c3[size_string] = '\0';
                     change_label(s,c3);
                     v.push_back(s);
+                    bst_i.insert(c,s);
             }
         }
         ficheroEntrada.close();
@@ -92,6 +95,8 @@ private slots:
     void on_add_button_clicked();
 
     void on_actionthis_triggered();
+
+    void on_search_clicked();
 
 private:
     Ui::MainWindow *ui;
