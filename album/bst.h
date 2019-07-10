@@ -33,6 +33,51 @@ class bst
         }
         return false;
     }
+    bool delete_bst(node **& n, const K & key)
+        {
+            node * save;
+            node * mov;
+            node * aux;
+            if((*n)-> p_child[0] == nullptr && (*n)->p_child[1] == nullptr)
+            {
+                *n = nullptr;
+            }
+            else if ((*n)->p_child[0]== nullptr)
+            {
+                aux = *n;
+                *n = (*n)->p_child[1];
+                aux = nullptr;
+            }
+            else if ((*n)->p_child[1]== nullptr)
+            {
+                aux = *n;
+                *n = (*n)->p_child[0];
+                aux = nullptr;
+            }
+            else
+            {
+                mov = (*n)->p_child[0];
+                save = nullptr;
+
+                while(mov->p_child[0] != nullptr)
+                {
+                    save = mov;
+                    mov = mov ->p_child[1];
+                }
+
+
+                (*n)->key = mov->key;
+                (*n)->dato = mov->dato;
+
+                if(save==nullptr)
+                    (*n)->p_child[0] = mov ->p_child [0];
+                else
+                    save ->p_child[1] = save -> p_child[0];
+                save = nullptr;
+                // eliminar cuando tenga dos hijos
+            }
+            return true;
+        }
 };
 #include "bst.inl"
 #endif // BST_H

@@ -191,6 +191,8 @@ void MainWindow::on_actionBack_triggered()
         li.remove_back();
     }
     else {
+        it=li.begin();
+        bst_i.remove(get_name(*it));
         li.remove_back();
         save_binary(li);
     }
@@ -198,6 +200,7 @@ void MainWindow::on_actionBack_triggered()
 
 void MainWindow::on_actionthis_triggered()
 {
+    bst_i.remove(get_name(*it));
     li.remove(it);
     save_binary(li);
 }

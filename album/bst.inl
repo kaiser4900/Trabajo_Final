@@ -34,8 +34,7 @@ bool bst<K,D>::remove(const K & k)
 {
     node **n;
     if(!find(n,k)) return false;
-    //completar
-    return true;
+    return (delete_bst(n,k));
 }
 template<class K, class D>
 D & bst<K,D>::operator[](const K & key)
