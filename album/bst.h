@@ -16,7 +16,7 @@ class bst
     public:
     bst() : p_root(nullptr){}
     bool insert(const K & k, const D & d);
-
+    ~bst();
     bool find(const K & k);
     bool remove(const K & k);
 

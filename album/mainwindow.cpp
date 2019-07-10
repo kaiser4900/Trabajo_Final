@@ -155,6 +155,16 @@ void MainWindow::on_search_clicked()
     string utf8_text_1 = search.toUtf8().constData();
     if(bst_i.find(utf8_text_1))
     {
+        imagen p = bst_i.operator[](utf8_text_1);
+        QString p_1 = QString ::fromStdString(get_path(p));
+        ui->label->setPixmap(p_1);
+        string general = "<p>NAME: "+ get_name(p) +"</p>"+"<p>PATH: "+get_path(p)+"</p>"+"<p>LABEL: "+get_label(p)+"</p>";
+        a = new char[general.size()];
+        a[general.size()]=0;
+        for(size_t i=0;i<general.size();i++){
+            a[i]=general[i];
+        }
+        ui->label_2->setText(a);
         msgBox . setText( "Encontrado" );
         msgBox . exec();
     }

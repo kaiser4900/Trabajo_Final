@@ -44,3 +44,12 @@ D & bst<K,D>::operator[](const K & key)
         *n = new node (key);
     return (*n) -> dato;
 }
+template<class K, class D>
+bst<K,D>::~bst<K, D>()
+{
+    while(p_root != nullptr)
+    {
+        remove(p_root->key);
+    }
+}
+
